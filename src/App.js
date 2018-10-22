@@ -58,6 +58,22 @@ class BooksApp extends React.Component {
         ],
     };
 
+    changeShelf = (title, shelf) => {
+        
+        this.setState(() => {
+            return {
+                books: this.state.books.map(book => {
+                    if (book.title === title) {
+                        book.shelf = shelf;
+                        return book
+                    } else {
+                        return book
+                    }
+                }),
+            };
+        });
+    };
+
     render() {
         return (
             <div className="app">
@@ -92,13 +108,16 @@ class BooksApp extends React.Component {
                         <div className="list-books-content">
                             <div>
                                 <Shelf type="currentlyReading"
-                                       bookList={this.state.books.filter(book => book.shelf === 'currentlyReading')}/>
+                                       bookList={this.state.books.filter(book => book.shelf === 'currentlyReading')}
+                                       changeShelf={this.changeShelf}/>
 
                                 <Shelf type="wantToRead"
-                                       bookList={this.state.books.filter(book => book.shelf === 'wantToRead')}/>
+                                       bookList={this.state.books.filter(book => book.shelf === 'wantToRead')}
+                                       changeShelf={this.changeShelf}/>
 
                                 <Shelf type="read"
-                                       bookList={this.state.books.filter(book => book.shelf === 'read')}/>
+                                       bookList={this.state.books.filter(book => book.shelf === 'read')}
+                                       changeShelf={this.changeShelf}/>
 
                             </div>
                         </div>

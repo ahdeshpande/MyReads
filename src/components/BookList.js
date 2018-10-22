@@ -11,6 +11,7 @@ const BookList = props => {
                           author={book.author}
                           shelf={book.shelf}
                           cover={book.cover}
+                          changeShelf={props.changeShelf}
                     />
                 </li>
             ))}
@@ -20,6 +21,7 @@ const BookList = props => {
 
 BookList.propTypes = {
     bookList: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired,
 };
 
 export default BookList;

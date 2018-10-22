@@ -10,7 +10,8 @@ const Shelf = props => {
             <h2 className="bookshelf-title">{ShelfEnum[props.type]}</h2>
             <div className="bookshelf-books">
 
-                <BookList bookList={props.bookList}/>
+                <BookList bookList={props.bookList}
+                          changeShelf={props.changeShelf}/>
 
             </div>
         </div>
@@ -20,6 +21,7 @@ const Shelf = props => {
 Shelf.propTypes = {
     type: PropTypes.string.isRequired,
     bookList: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired,
 };
 
 export default Shelf;

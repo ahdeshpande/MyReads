@@ -18,6 +18,12 @@ export default class Book extends React.Component {
         };
     }
 
+    onChangeShelf = e => {
+        e.preventDefault();
+        this.setState({shelf: e.target.value});
+        this.props.changeShelf(this.props.title, e.target.value);
+    };
+
     render() {
         const {cover, title, author} = this.props;
         return (
@@ -32,7 +38,8 @@ export default class Book extends React.Component {
                         }}/>
                     <div
                         className="book-shelf-changer">
-                        <select value={this.state.shelf} onChange={() => {}}>
+                        <select value={this.state.shelf}
+                                onChange={this.onChangeShelf}>
                             <option
                                 value="move"
                                 disabled>Move
@@ -40,7 +47,7 @@ export default class Book extends React.Component {
                             </option>
                             {Object.keys(ShelfEnum).map(shelf => (
                                 <option key={shelf}
-                                    value={shelf}>{ShelfEnum[shelf]}
+                                        value={shelf}>{ShelfEnum[shelf]}
                                 </option>
                             ))}
                         </select>
@@ -62,4 +69,5 @@ Book.propTypes = {
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     shelf: PropTypes.string.isRequired,
+    changeShelf: PropTypes.func.isRequired,
 };
