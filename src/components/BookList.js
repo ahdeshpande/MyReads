@@ -7,11 +7,8 @@ const BookList = props => {
         <ol className="books-grid">
             {props.bookList.map(book => (
                 <li key={book.id}>
-                    <Book id={book.id}
-                          title={book.title}
-                          authors={book.authors}
+                    <Book details={book}
                           shelf={book.shelf !== undefined ? book.shelf : Object.keys(ShelfEnum)[Object.keys(ShelfEnum).length - 1]}
-                          cover={book.imageLinks.thumbnail}
                           changeShelf={props.changeShelf}
                     />
                 </li>

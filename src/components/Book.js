@@ -21,11 +21,11 @@ export default class Book extends React.Component {
     onChangeShelf = e => {
         e.preventDefault();
         this.setState({shelf: e.target.value});
-        this.props.changeShelf(this.props.id, e.target.value);
+        this.props.changeShelf(this.props.details, e.target.value);
     };
 
     render() {
-        const {cover, title, authors} = this.props;
+        const {details} = this.props;
         return (
             <div className="book">
                 <div className="book-top">
@@ -34,7 +34,7 @@ export default class Book extends React.Component {
                         style={{
                             width: 128,
                             height: 193,
-                            backgroundImage: `url(${cover})`
+                            backgroundImage: `url(${details.imageLinks.thumbnail})`
                         }}/>
                     <div
                         className="book-shelf-changer">
@@ -55,10 +55,10 @@ export default class Book extends React.Component {
                     </div>
                 </div>
                 <div
-                    className="book-title">{title}
+                    className="book-title">{details.title}
                 </div>
                 <div
-                    className="book-authors">{authors && authors.map(author => {
+                    className="book-authors">{details.authors && details.authors.map(author => {
                     return (<span key={author}>{author}<br/></span>)
                 })}
                 </div>
@@ -68,10 +68,7 @@ export default class Book extends React.Component {
 }
 
 Book.propTypes = {
-    id: PropTypes.string.isRequired,
-    cover: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired,
+    details: PropTypes.object.isRequired,
     shelf: PropTypes.string.isRequired,
     changeShelf: PropTypes.func.isRequired,
 };
