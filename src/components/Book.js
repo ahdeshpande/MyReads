@@ -32,16 +32,15 @@ export default class Book extends React.Component {
                         }}/>
                     <div
                         className="book-shelf-changer">
-                        <select>
+                        <select value={this.state.shelf} onChange={() => {}}>
                             <option
                                 value="move"
                                 disabled>Move
                                 to...
                             </option>
                             {Object.keys(ShelfEnum).map(shelf => (
-                                <option
-                                    value="shelf"
-                                    selected={this.state.shelf === shelf ? 'selected' : false}>{ShelfEnum[shelf]}
+                                <option key={shelf}
+                                    value={shelf}>{ShelfEnum[shelf]}
                                 </option>
                             ))}
                         </select>
