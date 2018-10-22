@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Enum for Shelf
-const ShelfEnum = {
+export const ShelfEnum = {
     currentlyReading: 'Currently Reading',
     wantToRead: 'Want To Read',
     read: 'Read',
