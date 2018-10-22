@@ -55,7 +55,14 @@ class BooksApp extends React.Component {
                     if (Array.isArray(res)) {
                         this.setState(() => {
                             return {
-                                searchResults: res,
+                                searchResults: res.map(item => {
+                                    const book = this.state.books.find(b => b.id === item.id);
+                                    if (book === undefined) {
+                                        return item;
+                                    } else {
+                                        return book;
+                                    }
+                                }),
                             };
                         });
                     } else {
