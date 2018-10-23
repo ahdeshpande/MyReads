@@ -34,7 +34,7 @@ export default class Book extends React.Component {
                         style={{
                             width: 128,
                             height: 193,
-                            backgroundImage: `url(${details.imageLinks.thumbnail})`
+                            backgroundImage: `url(${details.imageLinks && details.imageLinks.thumbnail})`
                         }}/>
                     <div
                         className="book-shelf-changer">
