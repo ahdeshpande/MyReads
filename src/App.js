@@ -70,7 +70,11 @@ class BooksApp extends React.Component {
                             };
                         });
                     } else {
-                        console.log(res)
+                        this.setState(() => {
+                            return {
+                                searchResults: [],
+                            };
+                        });
                     }
                 })
                 .catch(error => (
