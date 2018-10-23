@@ -17,14 +17,23 @@ class BooksApp extends React.Component {
         searchResults: [],
     };
 
+    updateBookDB = (book, shelf) => {
+
+    };
+
     addToShelf = (book, shelf) => {
         if (this.state.books.filter(item => item.id === book.id).length === 0) {
-            this.setState(() => {
-                book.shelf = shelf;
-                return {
-                    books: [...this.state.books, book],
-                };
-            });
+            BooksAPI.update(book, shelf)
+                .then(
+                    this.setState(() => {
+                        book.shelf = shelf;
+                        return {
+                            books: [...this.state.books, book],
+                        };
+                    }))
+                .catch(error => (
+                    console.log(error)
+                ));
         } else {
             this.changeShelf(book, shelf);
         }
@@ -32,18 +41,23 @@ class BooksApp extends React.Component {
 
     changeShelf = (book, shelf) => {
 
-        this.setState(() => {
-            return {
-                books: this.state.books.map(item => {
-                    if (item.id === book.id) {
-                        item.shelf = shelf;
-                        return item
-                    } else {
-                        return item
-                    }
-                }),
-            };
-        });
+        BooksAPI.update(book, shelf)
+            .then(
+                this.setState(() => {
+                    return {
+                        books: this.state.books.map(item => {
+                            if (item.id === book.id) {
+                                item.shelf = shelf;
+                                return item
+                            } else {
+                                return item
+                            }
+                        }),
+                    };
+                }))
+            .catch(error => (
+                console.log(error)
+            ));
     };
 
     searchBooks = query => {
