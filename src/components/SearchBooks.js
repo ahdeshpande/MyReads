@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookList from "./BookList";
+import {Link} from "react-router-dom";
 
 export default class SearchBooks extends React.Component {
     constructor(props) {
@@ -22,12 +23,12 @@ export default class SearchBooks extends React.Component {
     };
 
     render() {
-        const {showSearchPage, searchResults, addShelf} = this.props;
+        const {searchResults, addShelf} = this.props;
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <a className="close-search"
-                       onClick={() => showSearchPage(false)}>Close</a>
+                    <Link className="close-search"
+                          to="/">Close</Link>
                     <div className="search-books-input-wrapper">
 
                         <input type="text"
@@ -47,7 +48,6 @@ export default class SearchBooks extends React.Component {
 }
 
 SearchBooks.propTypes = {
-    showSearchPage: PropTypes.func.isRequired,
     searchQuery: PropTypes.func.isRequired,
     addShelf: PropTypes.func.isRequired,
     searchResults: PropTypes.array,
