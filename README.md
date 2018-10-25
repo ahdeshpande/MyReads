@@ -4,7 +4,7 @@ The MyReads project is a bookshelf app that allows you to select and
  categorize books you have read, are currently reading, or want to read. The
  book database is served by a Backend server by Udacity.
 
-The project is live [here].(https://b00kshelf.herokuapp.com/)
+The project is live [here](https://b00kshelf.herokuapp.com/).
 
 This project was bootstrapped with
 [Create React App](https://github.com/facebookincubator/create-react-app).
